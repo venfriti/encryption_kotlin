@@ -1,13 +1,10 @@
-fun main(args: Array<String>) {
+fun main() {
     val example = Example()
-    val sixDigitNumber = 623456 // Replace with your desired input number
-    val subtract = example.subtractAndLoopBack(sixDigitNumber)
+    val unixTime = System.currentTimeMillis();
+    val lastSixDigits = unixTime % 1000000
+    val subtract = example.subtractAndLoopBack(lastSixDigits.toString())
     val rearrangedString = example.rearrangeDigits(subtract)
     val remappedString = example.mappedDigits(rearrangedString)
-    println("Original Number: $sixDigitNumber")
+    println("Original Number: $lastSixDigits")
     println("Encrypted Number: $remappedString")
-
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
 }

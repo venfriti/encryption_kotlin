@@ -1,6 +1,6 @@
 class Example {
-    fun subtractAndLoopBack(number: Int): String {
-        val numStr = number.toString().toCharArray()
+    fun subtractAndLoopBack(number: String): String {
+        val numStr = number.toCharArray()
         val lastDigit = Character.getNumericValue(numStr[numStr.size - 1])
 
         val result = numStr.map { digitChar ->
