@@ -1,5 +1,5 @@
 class Example {
-    fun subtractAndLoopBack(number: Int): Int {
+    fun subtractAndLoopBack(number: Int): String {
         val numStr = number.toString().toCharArray()
         val lastDigit = Character.getNumericValue(numStr[numStr.size - 1])
 
@@ -11,29 +11,48 @@ class Example {
                 digit - lastDigit
             }
         }.joinToString("").toInt()
-        return result + lastDigit
+        val resultString = (result + lastDigit).toString()
+        return if (resultString.length == 6){
+            resultString
+        } else {
+            "0$resultString"
+        }
     }
 
-    fun rearrangeDigits(number: Int): Int {
-        val numberString = number.toString()
-
-        if (numberString.length != 6) {
+    fun rearrangeDigits(number: String): String {
+        if (number.length != 6) {
             throw IllegalArgumentException("Input must be a six-digit number")
         }
+        var numbered = ""
+        numbered += number[4]
+        numbered += number[0]
+        numbered += number[1]
+        numbered += number[5]
+        numbered += number[3]
+        numbered += number[2]
 
-        val first = numberString[4]
-        val second = numberString[0]
-        val third = numberString[1]
-        val fourth = numberString[5]
-        val fifth = numberString[3]
-        val sixth = numberString[2]
-
-        val rearrangedNumberString = "$first$second$third$fourth$fifth$sixth"
-
-        return rearrangedNumberString.toInt()
+        return numbered
     }
 
-//    fun mappedDigits(number:Int): Int {
-//
-//    }
+    fun mappedDigits(number: String): String{
+        var mapped = ""
+        val numberMap = mapOf(
+            0 to 4,
+            1 to 3,
+            2 to 9,
+            3 to 6,
+            4 to 2,
+            5 to 8,
+            6 to 1,
+            7 to 5,
+            8 to 7,
+            9 to 0
+        )
+
+        for (i in 0..5){
+            val checker = numberMap[number[i].digitToInt()]
+            mapped += checker.toString()
+        }
+        return mapped
+    }
 }
