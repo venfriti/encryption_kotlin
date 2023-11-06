@@ -1,11 +1,14 @@
 fun main() {
     val example = Example()
-    val unixTime = System.currentTimeMillis();
-    val lastSixDigits = unixTime % 1000000
-    val subtract = example.subtractAndLoopBack("123456")
-    val rearrangedString = example.rearrangeDigits("123456")
+    val unixTime = System.currentTimeMillis()
+    val lastSixDigits = unixTime % 100000000
+    val stringValue = lastSixDigits.toString()
+    val removeTwo = stringValue.substring(0, stringValue.length - 2)
+
+    val subtract = example.ethicalSubtraction(removeTwo)
+    val rearrangedString = example.rearrangeDigits(subtract)
     val remappedString = example.mappedDigits(rearrangedString)
-    println("Subtracted Number: $subtract")
-    println("Original Number: $lastSixDigits")
+    println("Original Number: $removeTwo")
     println("Encrypted Number: $remappedString")
+
 }

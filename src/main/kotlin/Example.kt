@@ -1,41 +1,31 @@
 class Example {
-    fun subtractAndLoopBack(number: String): String {
-        val numbered: String = if (number.length != 6){
-            "0$number"
-        } else {
-            number
+    fun ethicalSubtraction(number: String): String{
+        var sixDigits = number
+        while(sixDigits.length != 6){
+            sixDigits = "0$sixDigits"
         }
-        val numStr = numbered.toCharArray()
-        val lastDigit = Character.getNumericValue(numStr[numStr.size - 1])
-
-        val result = numStr.map { digitChar ->
-            val digit = Character.getNumericValue(digitChar)
-            if (digit < lastDigit) {
-                9 - (lastDigit - digit)
+        val lastDigit = sixDigits[5].digitToInt()
+        var subtracted = ""
+        for (i in 0..4){
+            val currentNum = sixDigits[i].digitToInt()
+            subtracted += if (lastDigit > currentNum){
+                val subtraction = 10 + currentNum - lastDigit
+                subtraction
             } else {
-                digit - lastDigit
+                val subtraction = currentNum - lastDigit
+                subtraction
             }
-        }.joinToString("").toInt()
-        val resultString = (result + lastDigit).toString()
-        return if (resultString.length == 6){
-            resultString
-        } else {
-            "0$resultString"
         }
+        subtracted += lastDigit
+        return subtracted
     }
 
     fun rearrangeDigits(number: String): String {
-        if (number.length != 6) {
-            throw IllegalArgumentException("Input must be a six-digit number")
-        }
+        val numberList = listOf(4, 0, 1, 5, 3, 2)
         var numbered = ""
-        numbered += number[4]
-        numbered += number[0]
-        numbered += number[1]
-        numbered += number[5]
-        numbered += number[3]
-        numbered += number[2]
-
+        for (i in numberList){
+            numbered += number[i]
+        }
         return numbered
     }
 

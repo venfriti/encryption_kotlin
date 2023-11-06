@@ -15,13 +15,11 @@ val cupcake : (Int) -> String = {
     "Have a cupcake!"
 }
 
-fun trickOrTreat(isTrick: Boolean, extraTreats: ((Int) -> String)?) : () -> Unit {
+fun trickOrTreat(isTrick: Boolean, extraTreats: (Int) -> String) : () -> Unit {
     return if (isTrick){
         trick
     } else {
-        if (extraTreats != null) {
-            println(extraTreats(5))
-        }
+        println(extraTreats(5))
         treat
     }
 }

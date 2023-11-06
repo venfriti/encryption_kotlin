@@ -1,3 +1,5 @@
+package kotlin_exercises
+
 class MobileNotifications {}
 fun main() {
     val child = 5
@@ -12,7 +14,6 @@ fun main() {
 }
 
 fun ticketPrice(age: Int, isMonday: Boolean): Int {
-    // Fill in the code.
     val result = if (age < 13) {
         15
     } else if (age < 61) {
